@@ -4976,6 +4976,36 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.0000001482218
       objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 5bfc620e6ae43e3429268c155913d92f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.50008726
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 5bfc620e6ae43e3429268c155913d92f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.49991274
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 5bfc620e6ae43e3429268c155913d92f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.50008726
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 5bfc620e6ae43e3429268c155913d92f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.49991274
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 5bfc620e6ae43e3429268c155913d92f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 5bfc620e6ae43e3429268c155913d92f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -5100,6 +5130,10 @@ MonoBehaviour:
   ground_touching: 0
   do_jump: 0
   jump: 0
+  do_walk: 0
+  timer: 0
+  camera: {fileID: 0}
+  camera_offset: {x: 0, y: 5.656854, z: -5.656854}
 --- !u!95 &6533163844516726469
 Animator:
   serializedVersion: 5
