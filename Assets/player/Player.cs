@@ -21,11 +21,53 @@ public class Player : MonoBehaviour
     public float timer = 0;
 
     public Transform camera;
-    public Vector3 camera_offset = new Vector3(0, 1, -1).normalized * 8.0f;
+    public Vector3 camera_offset = new Vector3(0, 1, -1).normalized * 12.0f;
+
+    public bool KABOOM = false;
+    private bool do_kick = false;
+
+    public Vector3 dir = new Vector3(0, 0, 0);
 
     void Start()
     {
 
+    }
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            animator.SetBool("kick", true);
+        }
+        else
+        {
+            animator.SetBool("kick", false);
+        }
+
+        if (KABOOM)
+        {
+            if (!do_kick)
+            {
+                do_kick = true;
+
+                var objects = FindObjectsOfType<Rigidbody>();
+
+                foreach (Rigidbody obj in objects)
+                {
+                    if (obj.gameObject != gameObject)
+                    {
+                        if (Vector3.Distance(obj.gameObject.transform.position, transform.position + dir * 5) <= 6)
+                        {
+                            obj.AddForceAtPosition(new Vector3(dir.x, 1, dir.z) * 16, transform.position, ForceMode.Impulse);
+                        }
+                    }
+                }
+            }
+        } else
+        {
+            do_kick = false;
+        }
     }
     void FixedUpdate()
     {
@@ -59,6 +101,12 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 dir.x += 1;
+            }
+
+            this.dir = dir;
+            if (this.dir.magnitude > 0)
+            {
+                this.dir.Normalize();
             }
 
             if (dir.magnitude > 0)
@@ -123,7 +171,6 @@ public class Player : MonoBehaviour
                 {
                     if (!ground_touching)
                     {
-                        Debug.Log("I AM ON THE GROUND STOP JUMPING RIGHT NOW");
                         animator.SetBool("jump", false);
                         animator.SetBool("walk", false);
                         jump = false;
@@ -139,5 +186,6 @@ public class Player : MonoBehaviour
         }
 
         timer -= Time.fixedDeltaTime;
+
     }
 }
